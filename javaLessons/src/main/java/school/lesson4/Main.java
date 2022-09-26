@@ -31,5 +31,7 @@ public class Main {
         cat2.swim(0);
 
         Animal.printAnimalsCount();
+        Dog.printDogCount();
+        Cat.printCatCount();
     }
 }

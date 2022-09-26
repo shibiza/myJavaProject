@@ -2,9 +2,11 @@ package school.lesson4.animalCatDog;
 
 public class Dog extends Animal {
 
-    public Dog(String animalName) {
+static int dogCount=0;
 
+    public Dog(String animalName) {
         super(animalName);
+        dogCount++;
     }
 
     @Override
@@ -20,4 +22,8 @@ public class Dog extends Animal {
             System.out.println(animalName + " проплыл " + swimLength + " м.");
         } else System.out.println(animalName + " столько не проплывет.");
     }
+    public static void printDogCount() {
+        System.out.println("Количество собак " + dogCount + ".");
+    }
+
 }

@@ -2,8 +2,10 @@ package school.lesson4.animalCatDog;
 
 public class Cat extends Animal {
 
+    static int catCount=0;
     public Cat(String animalName) {
         super(animalName);
+        catCount++;
     }
 
     @Override
@@ -16,5 +18,9 @@ public class Cat extends Animal {
     @Override
     public void swim(int swimLength) {
         System.out.println(animalName + " не умеет плавать.");
+    }
+
+    public static void printCatCount() {
+        System.out.println("Количество котов " + catCount + ".");
     }
 }

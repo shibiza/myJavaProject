@@ -1,45 +1,32 @@
 package school.lesson5;
 
-import java.util.ArrayList;
-
 public class Box<T extends Fruit> {
 
-    private final ArrayList<T> list;
+    private T obj;
+    private int fruitCount;
 
-    public ArrayList<T> getList() {
-        return list;
+    public Box(T obj, int fruitCount) {
+        this.obj = obj;
+        this.fruitCount = fruitCount;
     }
 
-    public Box() {
-        list = new ArrayList<T>();
+    public T getObj() {
+        return obj;
     }
 
-    void add(T obj) {
-        list.add(obj);
+    public void setObj(T obj) {
+        this.obj = obj;
     }
 
-    void moveAt(Box<T> box) {
-        box.getList().addAll(list);
-        list.clear();
-    }
-
-    void info() {
-        if (list.isEmpty()) {
-            System.out.println("Коробка пуста");
-        } else {
-            System.out.println("В коробке находятся " + list.get(0).toString() + " в количестве: " + list.size());
-        }
+    public void addFruit(int a) {
+        fruitCount += a;
     }
 
     float getWeight() {
-        if (list.isEmpty()) {
-            return 0;
-        } else {
-            return list.size() * list.get(0).getWeight();
-        }
+        return fruitCount * obj.getWeight();
     }
 
-    boolean compare(Box<? extends Fruit> box) {
+    public boolean compare(Box<?> box) {
         return this.getWeight() == box.getWeight();
     }
 }

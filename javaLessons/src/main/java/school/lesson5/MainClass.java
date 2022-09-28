@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MainClass {
 
-        //Написать метод, который меняет два элемента массива местами (массив может быть любого ссылочного типа);
+    //Написать метод, который меняет два элемента массива местами (массив может быть любого ссылочного типа);
     public static <T> void swapTwoElementsOfArray(T[] arr, int a, int b) {
         T swap = arr[a];
         arr[a] = arr[b];
@@ -20,61 +20,18 @@ public class MainClass {
         swapTwoElementsOfArray(words, 1, 6);
         System.out.println(Arrays.asList(words));
 
-/*
-Даны классы Fruit, Apple extends Fruit, Orange extends Fruit;
-Класс Box, в который можно складывать фрукты. Коробки условно сортируются по типу фрукта, поэтому в одну коробку
-нельзя сложить и яблоки, и апельсины;
-Для хранения фруктов внутри коробки можно использовать ArrayList;
-Сделать метод getWeight(), который высчитывает вес коробки, зная вес одного фрукта и их количество: вес яблока – 1.0f,
- апельсина – 1.5f (единицы измерения не важны);
-Внутри класса Box сделать метод compare(), который позволяет сравнить текущую коробку с той, которую подадут в compare()
- в качестве параметра. true – если их массы равны, false в противоположном случае. Можно сравнивать коробки с яблоками
- и апельсинами;
-Написать метод, который позволяет пересыпать фрукты из текущей коробки в другую. Помним про сортировку фруктов: нельзя
- яблоки высыпать в коробку с апельсинами. Соответственно, в текущей коробке фруктов не остается, а в другую
- перекидываются объекты, которые были в первой;
-Не забываем про метод добавления фрукта в коробку.
-*/
-        //Задача 3. Коробки с фруктами
-        System.out.println("boxes");
-        Orange orange = new Orange();
-        Apple apple = new Apple();
-        Box<Orange> orangeBox1 = new Box();
-        Box<Orange> orangeBox2 = new Box();
-        Box<Apple> appleBox = new Box();
-        orangeBox1.add(new Orange());
-        orangeBox1.add(new Orange());
-        orangeBox1.add(new Orange());
+        System.out.println("\nЗадача №2. Методы с фруктами:");
+        Apple apple1 = new Apple();
+        Orange orange1 = new Orange();
+        System.out.println("Вес одного яблока: " + apple1.getWeight());
+        System.out.println("Вес одного апельсина: " + orange1.getWeight());
 
-        for (int i = 0; i < 4; i++) {
-            orangeBox2.add(new Orange());
-        }
-        for (int i = 0; i < 6; i++) {
-            appleBox.add(new Apple());
-        }
+        Box<Apple> appleBox = new Box<Apple>(apple1, 3);
+        System.out.println("Вес коробки с 3 яблоками: " + appleBox.getWeight());
+        Box<Orange> orangeBox = new Box<Orange>(orange1, 2);
+        System.out.println("Вес коробки с 2 апельсинами: " + orangeBox.getWeight());
 
-        orangeBox1.info();
-        orangeBox2.info();
-        appleBox.info();
-
-        float orange1Weigth = orangeBox1.getWeight();
-        float orange2Weigth = orangeBox2.getWeight();
-        float appleWeigth = appleBox.getWeight();
-        System.out.println("Вес коробки 1 с апельсинами: " + orange1Weigth);
-        System.out.println("Вес коробки 2 с апельсинами: " + orange2Weigth);
-        System.out.println("Вес коробки с яблоками: " + appleWeigth);
-
-        System.out.println("Сравнить вес orangeBox1 и appleBox: " + orangeBox1.compare(appleBox));
-        System.out.println("Сравнить вес orangeBox2 и appleBox: " + orangeBox2.compare(appleBox));
-
-        orangeBox1.moveAt(orangeBox2);
-
-        orangeBox1.info();
-        orangeBox2.info();
-        appleBox.info();
-    }
-
-    private static <E> List<E> convertToList(E[] array) {
-        return Arrays.asList(array);
+        System.out.println("Сравним вес коробки с яблоками и с апельсинами: ");
+        System.out.println(orangeBox.compare(appleBox));
     }
 }

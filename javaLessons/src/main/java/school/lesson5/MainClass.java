@@ -21,17 +21,24 @@ public class MainClass {
         System.out.println(Arrays.asList(words));
 
         System.out.println("\nЗадача №2. Методы с фруктами:");
-        Apple apple1 = new Apple();
-        Orange orange1 = new Orange();
-        System.out.println("Вес одного яблока: " + apple1.getWeight());
-        System.out.println("Вес одного апельсина: " + orange1.getWeight());
+        Apple apple = new Apple();
+        Orange orange = new Orange();
+        System.out.println("Вес одного яблока: " + apple.getWeight());
+        System.out.println("Вес одного апельсина: " + orange.getWeight());
 
-        Box<Apple> appleBox = new Box<Apple>(apple1, 3);
+        Box<Apple> appleBox = new Box<>(apple, 3);
         System.out.println("Вес коробки с 3 яблоками: " + appleBox.getWeight());
-        Box<Orange> orangeBox = new Box<Orange>(orange1, 2);
+        Box<Orange> orangeBox = new Box<>(orange, 2);
         System.out.println("Вес коробки с 2 апельсинами: " + orangeBox.getWeight());
 
         System.out.println("Сравним вес коробки с яблоками и с апельсинами: ");
         System.out.println(orangeBox.compare(appleBox));
+
+        System.out.println("\nПереложим яблоки в другую коробку:");
+        System.out.println("в первой коробке лежит " + appleBox.getWeight() + " яблока");
+        Box<Apple> appleBox2 = new Box<>(apple, 0);
+        System.out.println("во второй коробке лежит " + appleBox2.getWeight() + " яблок");
+        System.out.println("пересыпаем из первой коробки во вторую и.... магия...");
+        System.out.println("в первой коробке осталось " + (appleBox.replaceFruitsToAnotherBox(appleBox2)) + " яблок!");
     }
 }

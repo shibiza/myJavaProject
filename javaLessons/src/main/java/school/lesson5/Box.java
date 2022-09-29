@@ -1,45 +1,45 @@
 package school.lesson5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Box<T extends Fruit> {
 
-    private T obj;
-    private int fruitCount;
-    ArrayList<T> box = new ArrayList<>();
+    protected final ArrayList<T> fruits;
 
-    public Box(T obj, int fruitCount) {
-        this.obj = obj;
-        this.fruitCount = fruitCount;
+    protected Box(T... items) {
+        this.fruits = new ArrayList<T>(Arrays.asList(items));
     }
 
-    public T getObj() {
-        return obj;
+    public void add(T... items) {
+        this.fruits.addAll(Arrays.asList(items));
     }
 
-    public void setObj(T obj) {
-        this.obj = obj;
+    public void remove(T... items) {
+        for (T item : items) this.fruits.remove(item);
     }
 
-    public void addFruit(T obj, int a) {
-        box.add(obj);
-        fruitCount += a;
+    public ArrayList<T> getFruits() {
+        return new ArrayList<T>(fruits);
     }
 
-    float getWeight() {
-        return fruitCount * obj.getWeight();
+    public void clear() {
+        fruits.clear();
     }
 
-    public boolean compare(Box<?> box) {
+    public float getWeight() {
+        if (fruits.size() == 0) return 0;
+        float weight = 0;
+        for (T item : fruits) weight += item.getWeight();
+        return weight;
+    }
+
+    public boolean compare(Box box) {
         return this.getWeight() == box.getWeight();
     }
 
-    public int replaceFruitsToAnotherBox(Box<T> box2) {
-        box2.addAll(box);
-        this.box.clear();
-        return (int) box2.getWeight();
-    }
-
-    private void addAll(ArrayList<T> box) {
+    public void replaceFruitsToAnotherBox(Box<? super T> box) {
+        box.fruits.addAll(this.fruits);
+        clear();
     }
 }

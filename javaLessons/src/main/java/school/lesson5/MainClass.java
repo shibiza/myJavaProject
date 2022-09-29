@@ -2,19 +2,9 @@ package school.lesson5;
 
 import java.util.Arrays;
 
+import static school.lesson5.Variables.*;
+
 public class MainClass {
-
-    static String[] words = {"каждый", "охотник", "желает", "знать", "где", "сидит", "фазан"};
-    private static final Apple apple1 = new Apple();
-    private static final Apple apple2 = new Apple();
-    private static final Apple apple3 = new Apple();
-
-    private static final Orange orange1 = new Orange();
-    private static final Orange orange2 = new Orange();
-
-    private static final Box<Apple> appleBox1 = new Box<Apple>(apple1, apple2, apple3);
-    private static final Box<Orange> orangeBox2 = new Box<Orange>(orange1, orange2);
-    private static final Box<Orange> orangeBox3 = new Box<Orange>();
 
     //Написать метод, который меняет два элемента массива местами (массив может быть любого ссылочного типа);
     public static <T> void swapTwoElementsOfArray(T[] arr, int a, int b) {
